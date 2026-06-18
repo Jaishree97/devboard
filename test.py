@@ -2,4 +2,4 @@ print("This is a python file")
 
 
 def test_me():
-    return "Tested"
+    return "I am from master"
