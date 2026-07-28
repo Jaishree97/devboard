@@ -1,0 +1,52 @@
+services:
+
+  postgres:
+    image: postgres:17-alpine
+
+    environment:
+      POSTGRES_USER: devboard
+      POSTGRES_PASSWORD: devboard123
+      POSTGRES_DB: devboard
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init/postgres:/docker-entrypoint-initdb.d
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devboard -d devboard"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+  backend:
+    build:
+      context: ./backend
+
+    environment:
+      POSTGRES_URL: postgres://devboard:devboard123@postgres:5432/devboard
+
+    ports:
+      - "8081:8080"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+
+  frontend:
+    build:
+      context: ./frontend
+
+    ports:
+      - "8080:80"
+
+    depends_on:
+      - backend
+
+
+volumes:
+  postgres-data:
