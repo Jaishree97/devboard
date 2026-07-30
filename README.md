@@ -1,8 +1,8 @@
 # DevBoard
 
-A production-ready task management application built from scratch as a learning project.
+DevBoard is a full-stack project used for hands-on DevOps and GitHub Actions practice.
 
-## Tech Stack
+## Planned Stack
 
 - React
 - Go
@@ -10,18 +10,7 @@ A production-ready task management application built from scratch as a learning 
 - Docker
 - Docker Compose
 - GitHub Actions
-- SonarQube
-- OWASP ZAP
 
-## Project Status
+## Status
 
-🚧 In Progress
-
----
-
-## Learning Journey
-
-### Day 1
-- Project initialized
-- Understood project architecture
-- Planned application structure
+Fresh project baseline. Application and CI/CD implementation will be added incrementally.
